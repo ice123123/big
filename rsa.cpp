@@ -17,7 +17,19 @@ int modPow(int b, int n, int m)
 // (pseudocode for this function can be found in the textbook)
 int extendedEuclideanGCD(int a, int b, int& s, int& t)
 {
-   return 1; // <----- replace this line with your working code
+   int temp;
+    if (b == 0)
+    {
+       return a;
+    }
+    else
+    {
+       a = gcd(b, a % b, s, t);
+       temp = s;
+       s = t;
+       t = temp - (a/b) * t;
+       return a;
+    }
 }
 
 // finds i such that a * i is congruent to 1 (mod m)

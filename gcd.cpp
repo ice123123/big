@@ -1,12 +1,18 @@
+/*****************************************************
+* Program: gcd
+* Author:  Joshua Jolley
+* Summary: Test program for gcd function
+*****************************************************/
 #include <iostream>
 #include <cstdlib>
 #include <algorithm>
 using namespace std;
 
 
-
-// finds GCD(a, b) and s and t such that sa + tb = GCD(a, b)
-// (pseudocode for this function can be found in the textbook)
+/****************************************************************
+* FUNCTION: gcd 
+* finds GCD(a, b) and s and t such that sa + tb = GCD(a, b)
+****************************************************************/
 int gcd(int a, int b, int& s, int& t)
 {
 	int temp;
@@ -24,6 +30,10 @@ int gcd(int a, int b, int& s, int& t)
     }
 }
 
+/****************************************************************
+* FUNCTION: main 
+* Test driver for gcd with interpreted results.
+****************************************************************/
 int main(int argc, char * argv[])
 {
 	int s = 0;
@@ -34,7 +44,7 @@ int main(int argc, char * argv[])
 		if (mygcd == atoi(argv[1]))
 			cout << argv[1] << " is a multple of  " << argv[2] << endl;
 		else if (mygcd == atoi(argv[2]))
-			cout << argv[2] << " is a multple of  " << argv[1] << endl;
+			cout << argv[2] << " is a multple of " << argv[1] << endl;
 		else if (mygcd == 1)
 			cout << argv[1] << " and " << argv[2] << " are coprime.\n";
 		else

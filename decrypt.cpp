@@ -31,14 +31,19 @@ int main()
    cout << "The message is: "<< message << endl;
    
    //get the key and the multiplyer
-   getKey(key,multiplyer);
+   //getKey(key,multiplyer);
 
    // convert the top secret message to the plain-text message
-   decrypt(message, key, multiplyer);
-
+   
+   for (int mult = 0; mult < 5; mult++)
+      for (int i = 0; i < 20; i++)
+      {
+         decrypt(message, i, 1);
+         display(message);
+      }
    // show the user
-   display(message);
-      
+   
+ 
    return 0;
 }
 

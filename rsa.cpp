@@ -65,6 +65,7 @@ int extendedEuclideanGCD(int a, int b, int &s, int &t)
    }
    s = old_s;
    t = old_t;
+   return old_r;
 }
 
 // finds i such that a * i is congruent to 1 (mod m)

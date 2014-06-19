@@ -9,27 +9,29 @@
 using namespace std;
 
 
-/****************************************************************
-* FUNCTION: gcd
-* finds GCD(a, b) and s and t such that sa + tb = GCD(a, b)
-****************************************************************/
-// int gcd(int a, int b, int& s, int& t)
+// /****************************************************************
+// * FUNCTION: gcd
+// * finds GCD(a, b) and s and t such that sa + tb = GCD(a, b)
+// ****************************************************************/
+// int gcd(int a, int b, int &s, int &t)
 // {
-//  int temp;
-//     if (b == 0)
-//     {
+
+//    if (b == 0)
+//    {
+//       s = tempS;
+//       t = tempT;
 //       cout << "s: " << s << " t: " << t << endl;
 //       return a;
-//     }
-//     else
-//     {
-//        cout << "s: " << s << " t: " << t << endl;
-//        a = gcd(b, a % b, s, t);
-//        temp = s;
-//        s = t;
-//        t = temp - (a/b) * t;
-//        return a;
-//     }
+//    }
+//    else
+//    {
+//       a = gcd(b, a % b, s, t);
+//       tempS = s;
+//       s = t;
+//       tempT = t;
+//       t = tempS - (a / b) * t;
+//       return a;
+//    }
 // }
 
 

@@ -2,46 +2,76 @@
  * RSA Encryption/Decryption
  ***********************************************************************/
 #include <cmath>
+#include <cassert>
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <cstdlib>
+#include <cstring>
 using namespace std;
 
 // finds b^n % m
 int modPow(int b, int n, int m)
 {
-   return 0; // <----- replace this line with your working code
+   int temp;
+   for (temp = 1; n; n >>= 1)
+   {
+      if (n & 1)
+         temp = (temp * b) % m;
+      b = (b * b) % m;
+   }
+   return temp;
 }
 
 // finds GCD(a, b) and s and t such that sa + tb = GCD(a, b)
 // (pseudocode for this function can be found in the textbook)
-int extendedEuclideanGCD(int a, int b, int& s, int& t)
+int extendedEuclideanGCD(int a, int b, int &s, int &t)
 {
+   s = 0;
+   int old_s = 1;
+   t = 1;
+   int old_t = 0;
+   int r = b;
+   int old_r = a;
+   int quotient;
    int temp;
-    if (b == 0)
-    {
-       return a;
-    }
-    else
-    {
-       a = gcd(b, a % b, s, t);
-       temp = s;
-       s = t;
-       t = temp - (a/b) * t;
-       return a;
-    }
+   while (r != 0)
+   {
+      quotient = old_r / r;
+
+      temp = r;
+      r = old_r - quotient * temp;
+      old_r = temp;
+
+      temp = s;
+      s = old_s - quotient * temp;
+      old_s = temp;
+
+      temp = t;
+      t = old_t - quotient * temp;
+      old_t = temp;
+   }
+   s = old_s;
+   t = old_t;
 }
 
 // finds i such that a * i is congruent to 1 (mod m)
 int findInverse(int a, int m)
 {
-   return 1; // <----- replace this line with your working code
+   int s = 0;
+   int t = 0;
+   int gcd = extendedEuclideanGCD(a, m, s, t);
+   assert(gcd == 1);
+   if (s < 0)
+      s += m;
+   return s;
+
 }
 
 /******************************************************************************
  * Run it through its paces.
  ******************************************************************************/
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
    if (argc < 5)
    {
@@ -55,7 +85,7 @@ int main(int argc, char* argv[])
    int e = atoi(argv[3]);
    int d = 0;
 
-   char* message = argv[4];
+   char *message = argv[4];
    int offset = 'A';    // offset for conversion without spaces
    bool spaces = false; // true => there are spaces in the message
 

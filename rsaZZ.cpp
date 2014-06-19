@@ -78,16 +78,3 @@ void findPandQ(ZZ m, ZZ &p, ZZ &q)
 {
   return;
 }
-
-/******************************************************************************
- * Replace all '@' characters in a string with ' ' (space) characters.
- ******************************************************************************/
-void replaceAllAtSignsWithSpaces(string &message)
-{
-   size_t index = 0;
-   while ((index = message.find_first_of('@', index)) >= 0 &&
-          index <= message.length())
-   {
-      message.replace(index++, 1, 1, ' ');
-   }
-}

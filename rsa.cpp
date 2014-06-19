@@ -10,18 +10,30 @@
 #include <cstring>
 using namespace std;
 
-// finds b^n % m
-int modPow(int b, int n, int m)
-{
-   int temp;
-   for (temp = 1; n; n >>= 1)
-   {
-      if (n & 1)
-         temp = (temp * b) % m;
-      b = (b * b) % m;
-   }
-   return temp;
+
+int modPow(int base, int exp, int modulus) {
+  base %= modulus;
+  int result = 1;
+  while (exp > 0) {
+    if (exp & 1) result = (result * base) % modulus;
+    base = (base * base) % modulus;
+    exp >>= 1;
+  }
+  return result;
 }
+
+// finds b^n % m
+// int modPow(int b, int n, int m)
+// {
+//    int temp;
+//    for (temp = 1; n; n >>= 1)
+//    {
+//       if (n & 1)
+//          temp = (temp * b) % m;
+//       b = (b * b) % m;
+//    }
+//    return temp;
+// }
 
 // finds GCD(a, b) and s and t such that sa + tb = GCD(a, b)
 // (pseudocode for this function can be found in the textbook)

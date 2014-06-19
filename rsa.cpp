@@ -15,7 +15,8 @@ int modPow(int base, int exp, int modulus) {
   base %= modulus;
   int result = 1;
   while (exp > 0) {
-    if (exp & 1) result = (result * base) % modulus;
+    if (exp & 1) 
+      result = (result * base) % modulus;
     base = (base * base) % modulus;
     exp >>= 1;
   }

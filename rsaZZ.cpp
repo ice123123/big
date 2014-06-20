@@ -4,7 +4,9 @@
  *    Brother Neff, CS237
  *
  * Author:
- *    Brother Neff
+ *    Joshua Jolley and Brother Neff
+ *    With Colaboration from
+ *       Ryan, Adam, Gage, Shane, Bro Neff, and other classmates via the wiki
  *
  * Summary:
  *    RSA Encryption/Decryption Driver
@@ -71,6 +73,6 @@ ZZ findE(ZZ t)
  ******************************************************************************/
 void findPandQ(ZZ m, ZZ &p, ZZ &q)
 {
-   GenPrime(p, floor(log(m)));
+   GenPrime(p, floor(log(m)));  //The log gives us the number of digits
    GenGermainPrime(q, floor(log(m)));
 }

@@ -42,7 +42,7 @@ ZZ fromBase27(string m) //from the great Ryan Humbert
 {
    ZZ num = to_ZZ(0);
    for (int i = 0; i < m.length(); i++)
-      num = num + power_ZZ(27, (m.length() - i - 1)) * (m[i] - '@'));
+      num = num + power_ZZ(27, (m.length() - i - 1) * (m[i] - '@'));
    return num;
 }
 /******************************************************************************

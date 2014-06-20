@@ -68,7 +68,7 @@ string toBase27(ZZ n)
    string message ="";
    for (n; n> 0; n /= 27)
       message.insert(0,1, char(rem(n,27) + '@'));
-   return message
+   return message;
 }
 
 /******************************************************************************

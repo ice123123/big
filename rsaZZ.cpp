@@ -26,7 +26,7 @@ const ZZ ZERO = to_ZZ(0);
  * Find b^n % m.
  ******************************************************************************/
 ZZ modPow(ZZ b, ZZ n, ZZ m) {
-   return PowerMod((const)b, (const)n, (const)m);
+   return PowerMod(b, n, m);
 }
 
 /******************************************************************************
@@ -85,6 +85,6 @@ void findPandQ(ZZ m, ZZ &p, ZZ &q)
 {
   long length = 0;
   for(; m != 0; m /= 10, length++);
-  GenPrime(p, length);
+  GenPrime(p, length / 2);
   NextPrime(q, p);
 }

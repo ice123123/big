@@ -17,6 +17,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <deque>
 
 NTL_CLIENT
 const ZZ ZERO = to_ZZ(0);
@@ -53,14 +54,18 @@ ZZ fromBase27(string message) //adapted from Ryan Humbert's code
  ******************************************************************************/
 string toBase27(ZZ n)
 {
-   string message = "";
+   deque<char> myDeque;
    while (n != 0)
    {
       int lastDigit = n % 27;
       n /= to_ZZ(27);
-      message += (lastDigit > 9) ? (char)(lastDigit + 64) : (char)(lastDigit + 47);
+      myDeque.push_front((char)(lastDigit + 64));
    }
+   string message ="";
+   for(std::deque<char>::iterator it = myDeque.begin(); it != myDeque.end(); ++it)
+      message += *it;
    return message;
+
 }
 
 /******************************************************************************
@@ -68,7 +73,9 @@ string toBase27(ZZ n)
  ******************************************************************************/
 ZZ findE(ZZ t)
 {
-  return to_ZZ(0); 
+  for (ZZ i = to_ZZ(3); i < t; i++)
+    if (GCD(i,t) == 1)
+      return i;
 }
 
 /******************************************************************************
@@ -76,5 +83,8 @@ ZZ findE(ZZ t)
  ******************************************************************************/
 void findPandQ(ZZ m, ZZ &p, ZZ &q)
 {
-  return;
+  long length = 0;
+  for(; m != 0; m /= 10, length++);
+  GenPrime(p, length);
+  NextPrime(q, p);
 }

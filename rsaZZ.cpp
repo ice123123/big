@@ -20,7 +20,6 @@
 #include <deque>
 
 NTL_CLIENT
-const ZZ ZERO = to_ZZ(0);
 
 /******************************************************************************
  * Find b^n % m.
@@ -39,9 +38,9 @@ ZZ findInverse(ZZ a, ZZ m) {
 /******************************************************************************
  * Convert from a text message representing a base 27 number to a ZZ number.
  ******************************************************************************/
-ZZ fromBase27(string m) //adapted from Ryan Humbert's code
+ZZ fromBase27(string m) //from the great Ryan Humbert
 {
-   ZZ num = ZERO;
+   ZZ num = to_ZZ(0);
    ZZ offset = to_ZZ(char('@'));
 
    for (int i = 0; i < m.length(); i++)
@@ -52,19 +51,8 @@ ZZ fromBase27(string m) //adapted from Ryan Humbert's code
 /******************************************************************************
  * Convert from a ZZ number to a base 27 number represented by a text message.
  ******************************************************************************/
-string toBase27(ZZ n)
+string toBase27(ZZ n) //from the great Ryan Humbert
 {
-   // deque<char> myDeque;
-   // while (n != 0)
-   // {
-   //    int lastDigit = n % 27;
-   //    n /= to_ZZ(27);
-   //    myDeque.push_front((char)(lastDigit + 64));
-   // }
-   // string message = "";
-   // for (std::deque<char>::iterator it = myDeque.begin(); it != myDeque.end(); ++it)
-   //    message += *it;
-   // return message;
    string message ="";
    for (n; n> 0; n /= 27)
       message.insert(0,1, char(rem(n,27) + '@'));
@@ -86,8 +74,6 @@ ZZ findE(ZZ t)
  ******************************************************************************/
 void findPandQ(ZZ m, ZZ &p, ZZ &q)
 {
-   long length = 0;
-   for (; m != 0; m /= 10, length++);
-   GenPrime(p, length * 2);
-   GenGermainPrime(q, length * 2);
+   GenPrime(p, NumBytes(m));
+   GenGermainPrime(q, NumBytes(m));
 }

@@ -85,6 +85,6 @@ void findPandQ(ZZ m, ZZ &p, ZZ &q)
 {
    long length = 0;
    for (; m != 0; m /= 10, length++);
-   GenPrime(p, length);
-   GenPrime(q, length * 2);
+   GenPrime(p, length * 2);
+   GenGermainPrime(q, length * 2);
 }

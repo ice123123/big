@@ -74,6 +74,6 @@ ZZ findE(ZZ t)
  ******************************************************************************/
 void findPandQ(ZZ m, ZZ &p, ZZ &q)
 {
-   GenPrime(p, (long)NumBytes(m));
-   GenGermainPrime(q, (long)NumBytes(m));
+   GenPrime(p, NumBytes(m) * 64);
+   GenGermainPrime(q, (long)NumBytes(m) * 64);
 }

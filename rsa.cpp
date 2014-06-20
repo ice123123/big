@@ -23,19 +23,6 @@ int modPow(int base, int exp, int modulus) {
   return result;
 }
 
-// finds b^n % m
-// int modPow(int b, int n, int m)
-// {
-//    int temp;
-//    for (temp = 1; n; n >>= 1)
-//    {
-//       if (n & 1)
-//          temp = (temp * b) % m;
-//       b = (b * b) % m;
-//    }
-//    return temp;
-// }
-
 // finds GCD(a, b) and s and t such that sa + tb = GCD(a, b)
 // (pseudocode for this function can be found in the textbook)
 int extendedEuclideanGCD(int a, int b, int &s, int &t)

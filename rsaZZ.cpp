@@ -25,10 +25,10 @@ const ZZ ZERO = to_ZZ(0);
 /******************************************************************************
  * Find b^n % m.
  ******************************************************************************/
-ZZ modPow(ZZ b, ZZ n, ZZ m) {
-   return PowerMod(b % m, n, m);
+ZZ modPow(ZZ base, ZZ exponent, ZZ mod)
+{
+  PowerMod(base % mod,exponent,mod);
 }
-
 /******************************************************************************
  * Find i such that a * i is congruent to 1 (mod m).
  ******************************************************************************/
@@ -61,8 +61,8 @@ string toBase27(ZZ n)
       n /= to_ZZ(27);
       myDeque.push_front((char)(lastDigit + 64));
    }
-   string message ="";
-   for(std::deque<char>::iterator it = myDeque.begin(); it != myDeque.end(); ++it)
+   string message = "";
+   for (std::deque<char>::iterator it = myDeque.begin(); it != myDeque.end(); ++it)
       message += *it;
    return message;
 
@@ -73,9 +73,9 @@ string toBase27(ZZ n)
  ******************************************************************************/
 ZZ findE(ZZ t)
 {
-  for (ZZ i = to_ZZ(3); i < t; i++)
-    if (GCD(i,t) == 1)
-      return i;
+   for (ZZ i = to_ZZ(3); i < t; i++)
+      if (GCD(i, t) == 1)
+         return i;
 }
 
 /******************************************************************************
@@ -83,8 +83,8 @@ ZZ findE(ZZ t)
  ******************************************************************************/
 void findPandQ(ZZ m, ZZ &p, ZZ &q)
 {
-  long length = 0;
-  for(; m != 0; m /= 10, length++);
-  GenPrime(p, length / 2);
-  NextPrime(q, p);
+   long length = 0;
+   for (; m != 0; m /= 10, length++);
+   GenPrime(p, length / 2);
+   NextPrime(q, p);
 }

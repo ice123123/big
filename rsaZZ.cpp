@@ -41,11 +41,8 @@ ZZ findInverse(ZZ a, ZZ m) {
 ZZ fromBase27(string m) //from the great Ryan Humbert
 {
    ZZ num = to_ZZ(0);
-   ZZ offset = to_ZZ(char('@'));
-
    for (int i = 0; i < m.length(); i++)
-      num = num + power_ZZ(27, (m.length() - i - 1)) * (to_ZZ(m[i]) - offset);
-
+      num = num + power_ZZ(27, (m.length() - i - 1)) * (m[i] - '@'));
    return num;
 }
 /******************************************************************************
@@ -74,6 +71,6 @@ ZZ findE(ZZ t)
  ******************************************************************************/
 void findPandQ(ZZ m, ZZ &p, ZZ &q)
 {
-   GenPrime(p, NumBytes(m) * 4);
-   GenGermainPrime(q, NumBytes(m) * 4);
+   GenPrime(p, floor(log(m)));
+   GenGermainPrime(q, floor(log(m)));
 }

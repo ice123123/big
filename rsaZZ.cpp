@@ -27,7 +27,7 @@ const ZZ ZERO = to_ZZ(0);
  ******************************************************************************/
 ZZ modPow(ZZ base, ZZ exponent, ZZ mod)
 {
-  PowerMod(base,exponent,mod);
+  return PowerMod(base % mod, exponent, mod);
 }
 /******************************************************************************
  * Find i such that a * i is congruent to 1 (mod m).

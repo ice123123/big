@@ -39,33 +39,35 @@ ZZ findInverse(ZZ a, ZZ m) {
 /******************************************************************************
  * Convert from a text message representing a base 27 number to a ZZ number.
  ******************************************************************************/
-ZZ fromBase27(string message) //adapted from Ryan Humbert's code
+ZZ fromBase27(string m) //adapted from Ryan Humbert's code
 {
-   ZZ ZZnum = ZERO;
+   ZZ num = ZERO;
    ZZ offset = to_ZZ(char('@'));
 
-   for (int i = 0; i < message.length(); i++)
-      ZZnum = ZZnum + power_ZZ(27, (message.length() - i - 1)) * (to_ZZ(message[i]) - offset);
+   for (int i = 0; i < m.length(); i++)
+      num = num + power_ZZ(27, (m.length() - i - 1)) * (to_ZZ(m[i]) - offset);
 
-   return ZZnum;
+   return num;
 }
 /******************************************************************************
  * Convert from a ZZ number to a base 27 number represented by a text message.
  ******************************************************************************/
 string toBase27(ZZ n)
 {
-   deque<char> myDeque;
-   while (n != 0)
-   {
-      int lastDigit = n % 27;
-      n /= to_ZZ(27);
-      myDeque.push_front((char)(lastDigit + 64));
-   }
-   string message = "";
-   for (std::deque<char>::iterator it = myDeque.begin(); it != myDeque.end(); ++it)
-      message += *it;
-   return message;
-
+   // deque<char> myDeque;
+   // while (n != 0)
+   // {
+   //    int lastDigit = n % 27;
+   //    n /= to_ZZ(27);
+   //    myDeque.push_front((char)(lastDigit + 64));
+   // }
+   // string message = "";
+   // for (std::deque<char>::iterator it = myDeque.begin(); it != myDeque.end(); ++it)
+   //    message += *it;
+   // return message;
+   string message ="";
+   for (n; n> 0; n /= 27)
+      message.insert(0,1, char(rem(n,27) + '@'));
 }
 
 /******************************************************************************

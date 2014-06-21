@@ -33,7 +33,8 @@ ZZ modPow(ZZ base, ZZ exponent, ZZ mod)
 /******************************************************************************
  * Find i such that a * i is congruent to 1 (mod m).
  ******************************************************************************/
-ZZ findInverse(ZZ a, ZZ m) {
+ZZ findInverse(ZZ a, ZZ m) 
+{
    return InvMod(a, m);
 }
 
@@ -44,7 +45,7 @@ ZZ fromBase27(string m) //from the great Ryan Humbert
 {
    ZZ num = to_ZZ(0);
    for (int i = 0; i < m.length(); i++)
-      num = num + power_ZZ(27, (m.length() - i - 1)) * (to_ZZ(m[i] - '@'));
+      num += power_ZZ(27, (m.length() - i - 1)) * (m[i] - 64));
    return num;
 }
 /******************************************************************************
@@ -52,9 +53,9 @@ ZZ fromBase27(string m) //from the great Ryan Humbert
  ******************************************************************************/
 string toBase27(ZZ n) //from the great Ryan Humbert
 {
-   string message ="";
-   for (n; n> 0; n /= 27)
-      message.insert(0,1, char(rem(n,27) + '@'));
+   string message;
+   for (n; n > 0; n /= 27)
+      message.insert(0,1, char(n % 27 + 64));
    return message;
 }
 
